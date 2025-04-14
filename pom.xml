@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.swizz.analytics</groupId>
-    <artifactId>corp-struct-analytics</artifactId>
+    <artifactId>organization-analyzer</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 

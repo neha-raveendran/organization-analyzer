@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-class CorpStructureAnalysisApplicationTest {
+class OrganizationAnalyzerApplicationTest {
 
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
@@ -25,7 +25,7 @@ class CorpStructureAnalysisApplicationTest {
 
     @Test
     public void shouldSystemOutArgMissing(){
-        CorpStructureAnalysisApplication.main(null);
+        OrganizationAnalyzerApplication.main(null);
         Assertions.assertEquals("""
                 employee-analysis: CSV file path is missing
                 usage: employee-analysis [CSV-File-Path]""", outputStreamCaptor.toString()
@@ -34,7 +34,7 @@ class CorpStructureAnalysisApplicationTest {
 
     @Test
     public void shouldSystemOutCsvArgMissing(){
-        CorpStructureAnalysisApplication.main(new String[]{});
+        OrganizationAnalyzerApplication.main(new String[]{});
         Assertions.assertEquals("""
                 employee-analysis: CSV file path is missing
                 usage: employee-analysis [CSV-File-Path]""", outputStreamCaptor.toString()
@@ -43,7 +43,7 @@ class CorpStructureAnalysisApplicationTest {
 
     @Test
     public void shouldSystemOutCSVFileNotFound(){
-        CorpStructureAnalysisApplication.main(new String[]{"emp.csv"});
+        OrganizationAnalyzerApplication.main(new String[]{"emp.csv"});
         Assertions.assertEquals("""
                 employee-analysis: emp.csv CSV File not found
                 usage: employee-analysis [CSV-File-Path]""", outputStreamCaptor.toString()
@@ -53,7 +53,7 @@ class CorpStructureAnalysisApplicationTest {
     @Test
     public void shouldSystemOutInvalidCSV(){
         var path = ClassLoader.getSystemResource("salary_missing.csv").getPath();
-        CorpStructureAnalysisApplication.main(new String[]{path});
+        OrganizationAnalyzerApplication.main(new String[]{path});
         Assertions.assertEquals("""
                 employee-analysis: Error parsing CSV line: 4. [125,Bob,Ronstad,,123]
                 usage: employee-analysis [CSV-File-Path]""", outputStreamCaptor.toString()
