@@ -51,7 +51,7 @@ public class OrganizationCsvAnalyser {
                     validateSalary(empNode)
                             .ifPresent(report::add);
                     if (level > maxLevel) {
-                        report.add(String.format("Employee %d (%s , %s) has a reporting line that exceeds the allowed length by %d levels. \n",
+                        report.add(String.format("Employee %d (%s , %s) has a reporting line that exceeds the allowed length by %d levels.",
                                         empNode.getEmployee().getId(), empNode.getEmployee().getFirstName(), empNode.getEmployee().getLastName(),
                                         level
                                 ));
@@ -91,7 +91,7 @@ public class OrganizationCsvAnalyser {
         var minSalary = minSalary(avg);
         var maxSalary = maxSalary(avg);
         if (employee.getSalary() < minSalary) {
-            return Optional.of(String.format("Manager %d (%s , %s) earns %.2f less than the minimum salary threshold. \n Current Salary : %d | Minimum salary : %.2f \n",
+            return Optional.of(String.format("Manager %d (%s , %s) earns %.2f less than the minimum salary threshold. Current Salary : %d | Minimum salary : %.2f",
                     employee.getId(), employee.getFirstName(), employee.getLastName(),
                     minSalary - employee.getSalary(),
                     employee.getSalary(),
@@ -100,7 +100,7 @@ public class OrganizationCsvAnalyser {
         }
         if (employee.getSalary() > maxSalary) {
             return Optional.of(String.format(
-                    "Manager %d (%s, %s) earns %.2f more than the maximum salary threshold. \n  Current Salary : %d | Maximum salary : %.2f \n",
+                    "Manager %d (%s, %s) earns %.2f more than the maximum salary threshold. Current Salary : %d | Maximum salary : %.2f",
                     employee.getId(), employee.getFirstName(), employee.getLastName(),
                     employee.getSalary() - maxSalary,
                     employee.getSalary(),
